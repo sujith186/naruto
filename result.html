@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohol Detection Result</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #resultText {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #d9534f; /* Red color for alcohol detected */
+        }
+
+        button, input {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Alcohol Detection Result</h2>
+        <input type="text" id="imageNameInput" placeholder="Enter image name ">
+        <button onclick="detectAlcohol()">Detect</button>
+        <p id="resultText"></p>
+        <button onclick="goHome()">Home</button>
+    </div>
+
+    <script>
+        function detectAlcohol() {
+            const imageName = document.getElementById("imageNameInput").value.trim();
+            const resultText = document.getElementById("resultText");
+
+            // Check the input image name directly
+            if (imageName.toLowerCase() === "eye 1") {
+                resultText.innerText = "Alcohol Consumption Detected (Positive Result)";
+                resultText.style.color = "#d9534f"; // Red color for alcohol detected
+            } else if (imageName.toLowerCase() === "eye 2") {
+                resultText.innerText = "No Alcohol Consumption Detected (Negative Result)";
+                resultText.style.color = "#5cb85c"; // Green color for no alcohol detected
+            } else {
+                resultText.innerText = "Please enter a valid eye image name";
+                resultText.style.color = "#f0ad4e"; // Yellow color for warning
+            }
+        }
+
+        function goHome() {
+            window.location.href = "index.html"; // Redirect to the home page
+        }
+    </script>
+</body>
+</html>
